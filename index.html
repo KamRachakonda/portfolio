@@ -25,7 +25,7 @@
           <path d="M5 18H3"></path>
         </svg>
       </div>
-      <p class="loader-text">Loading my journey</p>
+      <p class="loader-text">Loading</p>
     </div>
   </div>
 
@@ -411,6 +411,15 @@
     </footer>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    // Failsafe: never leave the loader stuck, even if main script is cached/fails
+    setTimeout(function () {
+      var l = document.getElementById('loader');
+      if (l) l.classList.add('hidden');
+      var n = document.getElementById('nav');
+      if (n) n.classList.add('visible');
+    }, 3000);
+  </script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>
